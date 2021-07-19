@@ -16,18 +16,61 @@ namespace DDLC_Custom_Backgrounds
         public static List<CustomBackground> customBackgrounds;
         public static int selectedBackground = -1;
         public static string GalleryFolder;
+        public static string SaveFile;
         void Awake()
         {
             GalleryFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Gallery");
+            SaveFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "gallerysave.txt");
             if (!Directory.Exists(GalleryFolder))
             {
                 Directory.CreateDirectory(GalleryFolder);
             }
             LoadAllBackgrounds();
+            if (File.Exists(SaveFile))
+            {
+                Load(false);
+            }
+            else
+            {
+                Save();
+            }
             var harmony = new Harmony("com.wackery.custombackgroundpatch");
             harmony.PatchAll();
         }
 
+        public static void Save()
+        {
+            if (selectedBackground == -1)
+            {
+                File.WriteAllText(SaveFile, "0");
+            }
+            else
+            {
+                File.WriteAllText(SaveFile, "1" + customBackgrounds[selectedBackground].filename);
+            }
+        }
+        public static void Load(bool refreshBackground)
+        {
+            var data = File.ReadAllText(SaveFile);
+            if (!data.StartsWith("1"))
+            {
+                return;
+            }
+            data = data.Substring(1);
+            int i = 0;
+            foreach (CustomBackground background in customBackgrounds)
+            {
+                if (background.filename == data)
+                {
+                    selectedBackground = i;
+                }
+                i++;
+            }
+            if (refreshBackground)
+            {
+                ActivateBackground();
+            }
+        }
         void Update()
         {
             if (!Renpy.IsInitialized())
@@ -108,6 +151,7 @@ namespace DDLC_Custom_Backgrounds
             }
             else {
                 setBackground(customBackgrounds[selectedBackground]);
+                Save();
             }
         }
     }
