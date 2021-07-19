@@ -7,7 +7,7 @@ Copy the DDLC-Custom-Backgrounds.dll file into the `BepInEx/plugins` folder.
 # Build instructions
 Copy the following files to the lib folder:
 * all the files from `Doki Doki Literature Club Plus_Data\Managed` from your DDLC+ installation
-* BepInEx.dll (from https://github.com/BepInEx/BepInEx/releases)
+* BepInEx.dll (from https://github.com/BepInEx/BepInEx/releases in the `BepInEx\core` folder)
 Then use `dotnet publish` to build the dll. The built dll will be in `bin\Debug\netstandard2.0\publish` directory.
 
 # Usage
