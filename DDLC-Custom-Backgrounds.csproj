@@ -6,17 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>lib\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>lib\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>lib\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Harmony">
-      <HintPath>lib\BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="DDLC">
       <HintPath>lib\DDLC.dll</HintPath>
@@ -225,6 +219,10 @@
     <Reference Include="UnityPS">
       <HintPath>lib\UnityPS.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
