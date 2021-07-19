@@ -4,7 +4,11 @@ A BepInEx Plugin for DDLC+ which allows you to use custom desktop backgrounds
 # Installation
 Copy the DDLC-Custom-Backgrounds.dll file into the `BepInEx/plugins` folder. 
 
-# Build instructions
+# Building 
+## Requirements
+1. The dotnet SDK
+2. A copy of DDLC+
+## Build Steps
 Copy the following files to the lib folder:
 * all the files from `Doki Doki Literature Club Plus_Data\Managed` from your DDLC+ installation
 * BepInEx.dll (from https://github.com/BepInEx/BepInEx/releases in the `BepInEx\core` folder)
